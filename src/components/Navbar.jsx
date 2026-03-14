@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <nav className="glass-panel" style={{ background: 'rgba(10,11,14,0.6)' }}>
-      <div className="logo">TBJ<span className="text-gradient">Services</span></div>
+      <div className="logo">TBJ<span>Services</span></div>
       <div className="nav-links">
         <a 
           href="#servicios" 

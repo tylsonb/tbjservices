@@ -1,28 +1,28 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0a0b0e;
-  --bg2: #111318;
-  --bg3: #181c24;
-  --border: rgba(255,255,255,0.07);
-  --border-strong: rgba(255,255,255,0.13);
-  --accent: #00d4ff;
-  --accent2: #0099cc;
-  --accent-glow: rgba(0,212,255,0.15);
-  --text: #f0f2f5;
-  --text2: #8a9bb5;
-  --text3: #4a5568;
-  --green: #00e5a0;
-  --green-glow: rgba(0,229,160,0.12);
-  --glass-bg: rgba(17, 19, 24, 0.4);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --bg: #050E0A;
+  --bg2: #0A1610;
+  --bg3: #081208;
+  --border: rgba(134,239,172,0.1);
+  --border-strong: rgba(134,239,172,0.2);
+  --accent: #A3E635; /* Lima Neón */
+  --accent2: #16A34A; /* Verde profundo */
+  --accent-glow: rgba(163,230,53,0.15);
+  --text: #EDFFF3;
+  --text2: #66997A;
+  --text3: #22C55E;
+  --green: #22C55E; /* Verde principal */
+  --green-glow: rgba(34,197,94,0.12);
+  --glass-bg: rgba(10, 22, 16, 0.4);
+  --glass-border: rgba(134,239,172, 0.08);
   --glass-blur: blur(12px);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
@@ -153,6 +153,7 @@ h1 {
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin-bottom: 24px;
+  color: var(--text);
   animation: fadeUp 0.8s ease 0.2s both;
 }
 
@@ -208,40 +209,71 @@ h1 .line2 { display: block; color: var(--text2); font-weight: 700; }
 }
 .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
-/* ─── STATS STRIP ─── */
-.stats {
-  position: relative;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg2);
-  padding: 28px 40px;
+/* ─── CONSOLE MARQUEE STATS ─── */
+.stats-container {
+  border-top: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+  background: #020604; /* Fondo ultra oscuro tipo terminal */
+  padding: 16px 0;
+  overflow: hidden;
   display: flex;
-  justify-content: center;
-  gap: 0;
+  white-space: nowrap;
+  position: relative;
 }
 
-.stat-item {
-  flex: 1;
-  max-width: 200px;
-  text-align: center;
-  padding: 0 24px;
-  border-right: 1px solid var(--border);
+/* Sombras en los bordes para difuminar el carrusel */
+.stats-container::before,
+.stats-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
 }
-.stat-item:last-child { border-right: none; }
 
-.stat-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: -0.03em;
-  line-height: 1;
+.stats-container::before {
+  left: 0;
+  background: linear-gradient(to right, #020604, transparent);
 }
-.stat-label {
-  font-size: 0.8rem;
+
+.stats-container::after {
+  right: 0;
+  background: linear-gradient(to left, #020604, transparent);
+}
+
+.stats-ticker {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding-right: 60px;
+  width: max-content;
+}
+
+.console-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'DM Mono', monospace;
+}
+
+.console-prompt {
+  color: var(--green); /* Verde principal */
+  font-weight: 500;
+}
+
+.console-num {
+  color: var(--accent); /* Lima neón */
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+.console-label {
   color: var(--text2);
-  margin-top: 4px;
+  font-size: 0.9rem;
 }
+
 
 /* ─── SECTION BASE ─── */
 section {
@@ -252,6 +284,7 @@ section {
 }
 
 .section-label {
+  font-family: 'DM Mono', monospace;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -338,13 +371,14 @@ h2 {
 }
 
 .service-price {
+  font-family: 'DM Mono', monospace;
   display: inline-block;
   margin-top: 14px;
   font-size: 0.8rem;
   font-weight: 500;
-  color: var(--green);
-  background: var(--green-glow);
-  border: 1px solid rgba(0,229,160,0.2);
+  color: var(--bg);
+  background: var(--accent);
+  border: 1px solid rgba(163,230,53,0.2);
   border-radius: 100px;
   padding: 3px 12px;
   position: relative;
@@ -555,7 +589,7 @@ footer {
   gap: 16px;
 }
 
-footer .logo { font-size: 1rem; }
+footer .logo { font-size: 1rem; color: var(--text); }
 
 .footer-text {
   font-size: 0.82rem;

@@ -35,7 +35,7 @@ const Hero = () => {
         
         <motion.h1 variants={itemVariants}>
           Tu computador<br/>
-          <span className="accent text-gradient">reparado</span> y listo.
+          <span className="accent">reparado</span> y listo.
           <span className="line2">Rápido, sin vueltas.</span>
         </motion.h1>
         
