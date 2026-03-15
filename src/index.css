@@ -654,15 +654,20 @@ footer .logo { font-size: 1rem; color: var(--text); }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   nav { padding: 16px 20px; }
+  .logo { font-size: 1.1rem; }
   .nav-links { display: none; }
-  .hero { padding: 100px 20px 60px; }
+  .hero { padding: 80px 20px 40px; }
+  h1 { font-size: 2.2rem; line-height: 1.1; margin-bottom: 16px; }
+  .hero-sub { font-size: 1rem; margin-bottom: 32px; }
   section { padding: 70px 20px; }
-  .stats { gap: 0; padding: 20px; flex-wrap: wrap; }
-  .stat-item { flex: 1; min-width: 120px; border-right: none; border-bottom: 1px solid var(--border); padding: 12px; }
-  .stat-item:last-child { border-bottom: none; }
   .form-wrapper { grid-template-columns: 1fr; gap: 40px; }
   .form-row { grid-template-columns: 1fr; }
   footer { flex-direction: column; text-align: center; padding: 28px 20px; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.8rem; }
+  .hero { padding: 80px 16px 40px; }
 }
 
 /* ─── MODERN UI/UX EFFECTS (Ingeniela Reference) ─── */
