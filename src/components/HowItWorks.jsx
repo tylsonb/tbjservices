@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const HowItWorks = () => {
   const stepsData = [
     { num: '1', title: 'Envíame tu consulta', desc: 'Cuéntame qué equipo tienes, qué problema presenta y si enciende o no. Puedes escribirme por WhatsApp o llenar el formulario.' },
-    { num: '2', title: 'Recibe tu cotización', desc: 'En menos de 2 horas te confirmo el diagnóstico inicial y el precio exacto del servicio. Sin sorpresas.' },
+    { num: '2', title: 'Diagnóstico inicial', desc: 'En menos de 2 horas te confirmo el diagnóstico y los pasos a seguir. Sin sorpresas.' },
     { num: '3', title: 'Agendamos', desc: 'Coordinamos si será atención presencial en tu domicilio (Santiago RM) o asistencia remota en línea.' },
     { num: '4', title: 'Equipo listo', desc: 'Entregamos el equipo reparado y optimizado. La mayoría de los servicios se resuelven el mismo día.' },
   ];

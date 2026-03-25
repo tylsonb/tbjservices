@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 const statsData = [
   { num: "24h", label: "Tiempo de entrega" },
-  { num: "$10K", label: "Precio desde (CLP)" },
   { num: "8+", label: "Tipos de servicio" },
   { num: "100%", label: "Cotización sin costo" },
   { num: "360°", label: "Soporte integral" },

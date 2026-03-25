@@ -3,14 +3,14 @@ import { motion } from 'framer-motion';
 
 const Services = () => {
   const servicesData = [
-    { icon: '🔍', name: 'Diagnóstico y revisión', desc: 'Evaluación completa del equipo para identificar fallas de hardware o software.', price: 'Desde $10.000' },
-    { icon: '💿', name: 'Formateo e instalación Windows', desc: 'Instalación limpia del sistema operativo con configuración inicial incluida.', price: 'Desde $15.000' },
-    { icon: '⚡', name: 'Optimización de equipo lento', desc: 'Limpieza de software, arranque optimizado y mejoras de rendimiento.', price: 'Desde $12.000' },
-    { icon: '💾', name: 'Instalación de SSD', desc: 'Reemplaza tu disco duro por un SSD y acelera tu equipo hasta 5 veces.', price: 'Desde $20.000' },
-    { icon: '🧠', name: 'Ampliación de RAM', desc: 'Instalación o ampliación de memoria para mejorar el multitasking.', price: 'Desde $15.000' },
-    { icon: '🗂️', name: 'Respaldo y recuperación', desc: 'Recuperación de archivos eliminados o respaldo seguro de tu información.', price: 'Desde $18.000' },
-    { icon: '🧹', name: 'Limpieza interna', desc: 'Limpieza de polvo, pasta térmica y mantenimiento preventivo del equipo.', price: 'Desde $12.000' },
-    { icon: '📦', name: 'Instalación de programas', desc: 'Office, antivirus, Adobe, drivers y cualquier software que necesites.', price: 'Desde $10.000' },
+    { icon: '🔍', name: 'Diagnóstico y revisión', desc: 'Evaluación completa del equipo para identificar fallas de hardware o software.' },
+    { icon: '💿', name: 'Formateo e instalación Windows', desc: 'Instalación limpia del sistema operativo con configuración inicial incluida.' },
+    { icon: '⚡', name: 'Optimización de equipo lento', desc: 'Limpieza de software, arranque optimizado y mejoras de rendimiento.' },
+    { icon: '💾', name: 'Instalación de SSD', desc: 'Reemplaza tu disco duro por un SSD y acelera tu equipo hasta 5 veces.' },
+    { icon: '🧠', name: 'Ampliación de RAM', desc: 'Instalación o ampliación de memoria para mejorar el multitasking.' },
+    { icon: '🗂️', name: 'Respaldo y recuperación', desc: 'Recuperación de archivos eliminados o respaldo seguro de tu información.' },
+    { icon: '🧹', name: 'Limpieza interna', desc: 'Limpieza de polvo, pasta térmica y mantenimiento preventivo del equipo.' },
+    { icon: '📦', name: 'Instalación de programas', desc: 'Office, antivirus, Adobe, drivers y cualquier software que necesites.' },
   ];
 
   const containerVariants = {
@@ -66,7 +66,6 @@ const Services = () => {
             <div className="service-icon">{s.icon}</div>
             <div className="service-name">{s.name}</div>
             <div className="service-desc">{s.desc}</div>
-            <span className="service-price">{s.price}</span>
           </motion.div>
         ))}
       </motion.div>

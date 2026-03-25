@@ -41,7 +41,7 @@ const Hero = () => {
         
         <motion.p className="hero-sub" variants={itemVariants}>
           Diagnóstico, formateo, instalación de SSD, optimización y más.
-          Atención presencial y remota en Santiago. Precios desde <strong style={{color: 'var(--text)'}}>$10.000 CLP</strong>.
+          Atención presencial y remota en Santiago.
         </motion.p>
         
         <motion.div className="hero-actions" variants={itemVariants}>
