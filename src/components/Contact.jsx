@@ -2,20 +2,49 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    telefono: '',
+    equipo: '',
+    servicio: '',
+    enciende: 'Sí',
+    problema: ''
+  });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError(false);
+    setSuccess(false);
 
-    // Mockup envio: más adelante se conectará a Supabase
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) throw new Error('Error enviando el correo');
+      
       setSuccess(true);
-      setLoading(false);
-      // scroll to success
+      setFormData({
+        nombre: '', email: '', telefono: '', equipo: '', servicio: '', enciende: 'Sí', problema: ''
+      });
       document.getElementById('form-success')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 1000);
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -78,22 +107,28 @@ const Contact = () => {
           <div className="form-row">
             <div className="field">
               <label>Nombre</label>
-              <input type="text" name="nombre" placeholder="Tu nombre" required />
+              <input type="text" name="nombre" placeholder="Tu nombre" value={formData.nombre} onChange={handleChange} required />
             </div>
             <div className="field">
-              <label>Teléfono / WhatsApp</label>
-              <input type="tel" name="telefono" placeholder="+56 9 XXXX XXXX" required />
+              <label>Email</label>
+              <input type="email" name="email" placeholder="tu@email.com" value={formData.email} onChange={handleChange} required />
             </div>
           </div>
 
-          <div className="field">
-            <label>Marca y modelo del equipo</label>
-            <input type="text" name="equipo" placeholder="Ej: HP Pavilion 15, Lenovo IdeaPad 3..." required />
+          <div className="form-row">
+            <div className="field">
+              <label>Teléfono / WhatsApp</label>
+              <input type="tel" name="telefono" placeholder="+56 9 XXXX XXXX" value={formData.telefono} onChange={handleChange} required />
+            </div>
+            <div className="field">
+              <label>Marca y modelo del equipo</label>
+              <input type="text" name="equipo" placeholder="Ej: HP Pavilion 15..." value={formData.equipo} onChange={handleChange} required />
+            </div>
           </div>
 
           <div className="field">
             <label>Tipo de servicio</label>
-            <select name="servicio" defaultValue="">
+            <select name="servicio" value={formData.servicio} onChange={handleChange} required>
               <option value="" disabled>Selecciona un servicio...</option>
               <option>Diagnóstico y revisión</option>
               <option>Formateo e instalación Windows</option>
@@ -111,15 +146,15 @@ const Contact = () => {
             <label>¿El equipo enciende?</label>
             <div className="radio-group">
               <div className="radio-opt">
-                <input type="radio" name="enciende" id="r-si" value="Sí" defaultChecked />
+                <input type="radio" name="enciende" id="r-si" value="Sí" checked={formData.enciende === 'Sí'} onChange={handleChange} />
                 <label htmlFor="r-si">✓ Sí enciende</label>
               </div>
               <div className="radio-opt">
-                <input type="radio" name="enciende" id="r-no" value="No" />
+                <input type="radio" name="enciende" id="r-no" value="No" checked={formData.enciende === 'No'} onChange={handleChange} />
                 <label htmlFor="r-no">✗ No enciende</label>
               </div>
               <div className="radio-opt">
-                <input type="radio" name="enciende" id="r-av" value="A veces" />
+                <input type="radio" name="enciende" id="r-av" value="A veces" checked={formData.enciende === 'A veces'} onChange={handleChange} />
                 <label htmlFor="r-av">~ A veces</label>
               </div>
             </div>
@@ -127,13 +162,23 @@ const Contact = () => {
 
           <div className="field">
             <label>Describe el problema</label>
-            <textarea name="problema" placeholder="Cuéntame brevemente qué está pasando con tu equipo..."></textarea>
+            <textarea name="problema" placeholder="Cuéntame brevemente qué está pasando con tu equipo..." value={formData.problema} onChange={handleChange} required></textarea>
           </div>
 
           {!success && (
             <button type="submit" className="btn-submit hover-glow" id="submit-btn" disabled={loading}>
               {loading ? 'Enviando...' : 'Enviar y recibir cotización →'}
             </button>
+          )}
+
+          {error && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              style={{ marginTop: '16px', padding: '14px', background: 'rgba(255, 60, 60, 0.1)', border: '1px solid rgba(255, 60, 60, 0.3)', borderRadius: '8px', color: '#ff6b6b', fontSize: '0.9rem', textAlign: 'center' }}
+            >
+              Hubo un problema al enviar el mensaje. Inténtalo más tarde.
+            </motion.div>
           )}
 
           {success && (
