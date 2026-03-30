@@ -186,7 +186,7 @@ const Contact = () => {
               id="form-success" 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              style={{ marginTop: '16px', padding: '14px', background: 'var(--green-glow)', border: '1px solid rgba(0,229,160,0.3)', borderRadius: '8px', color: 'var(--green)', fontSize: '0.9rem', textAlign: 'center' }}
+              style={{ marginTop: '16px', padding: '14px', background: 'var(--accent-glow)', border: '1px solid var(--border-strong)', borderRadius: '8px', color: 'var(--accent)', fontSize: '0.9rem', textAlign: 'center' }}
             >
               ✓ ¡Mensaje enviado! Te responderemos en menos de 2 horas.
             </motion.div>

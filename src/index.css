@@ -1,21 +1,19 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #050E0A;
-  --bg2: #0A1610;
-  --bg3: #081208;
-  --border: rgba(134,239,172,0.1);
-  --border-strong: rgba(134,239,172,0.2);
+  --bg: #050E0A; /* Obsidian Profunda */
+  --bg2: #0A1610; /* Forest Surface */
+  --bg3: #020604; /* Terminal Black */
+  --border: rgba(163, 230, 53, 0.08); /* Lima Glow Border */
+  --border-strong: rgba(163, 230, 53, 0.15);
   --accent: #A3E635; /* Lima Neón */
-  --accent2: #16A34A; /* Verde profundo */
-  --accent-glow: rgba(163,230,53,0.15);
-  --text: #EDFFF3;
-  --text2: #66997A;
-  --text3: #22C55E;
-  --green: #22C55E; /* Verde principal */
-  --green-glow: rgba(34,197,94,0.12);
-  --glass-bg: rgba(10, 22, 16, 0.4);
-  --glass-border: rgba(134,239,172, 0.08);
+  --accent2: #16A34A; /* Verde Profundo */
+  --accent-glow: rgba(163, 230, 53, 0.12);
+  --text: #EDFFF3; /* Vaporous Green */
+  --text2: #66997A; /* Muted Sage */
+  --text3: #22C55E; /* Matrix Green */
+  --glass-bg: rgba(10, 22, 16, 0.6);
+  --glass-border: rgba(163, 230, 53, 0.1);
   --glass-blur: blur(12px);
 }
 
@@ -151,14 +149,17 @@ h1 {
   font-weight: 800;
   font-size: clamp(2.8rem, 6vw, 4.5rem);
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   margin-bottom: 24px;
   color: var(--text);
   animation: fadeUp 0.8s ease 0.2s both;
 }
 
-h1 .accent { color: var(--accent); }
-h1 .line2 { display: block; color: var(--text2); font-weight: 700; }
+h1 .accent { 
+  color: var(--accent);
+  text-shadow: 0 0 30px var(--accent-glow);
+}
+h1 .line2 { display: block; color: var(--text2); font-weight: 700; letter-spacing: -0.02em; }
 
 .hero-sub {
   font-size: 1.15rem;
@@ -322,23 +323,25 @@ h2 {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 28px;
-  transition: all 0.25s;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
   overflow: hidden;
+  backdrop-filter: var(--glass-blur);
 }
 
 .service-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--accent-glow);
+  background: radial-gradient(circle at top right, var(--accent-glow), transparent);
   opacity: 0;
-  transition: opacity 0.25s;
+  transition: opacity 0.4s ease;
 }
 
 .service-card:hover {
-  border-color: rgba(0,212,255,0.3);
-  transform: translateY(-2px);
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px -10px rgba(163, 230, 53, 0.15);
 }
 .service-card:hover::before { opacity: 1; }
 
